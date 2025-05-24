@@ -1,4 +1,6 @@
 # Файл docker-compose.yml
+version: '3'
+
 volumes:
   pg_data:
   # Новый volume — для статических файлов
@@ -19,9 +21,6 @@ services:
   frontend:
     env_file: .env
     build: ./frontend/
-    command: cp -r /app/build/. /frontend_static/
-    volumes:
-      - static:/frontend_static
   gateway:
     build: ./gateway/
     # А тут подключаем volume со статикой к gateway
